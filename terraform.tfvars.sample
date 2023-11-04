@@ -1,0 +1,70 @@
+project     = "tf-comt1"
+aws_region  = "ap-southeast-1" # "us-east-1", "ap-southeast-1"
+environment = "test" #prod, stg, dev
+
+# VPC
+az_set = ["us-east-1c"]
+main_vpc_cidr_block = "10.23.0.0/24"
+secondary_vpc_cidr_blocks = ["10.124.1.0/24"]
+private_subnets = ["10.23.0.0/25", "10.23.0.128/27"]
+public_subnets = ["10.124.1.0/27"]
+subnet_count = 3
+
+# EKS
+eks_version = "1.21.2"
+node_count     = 2
+instance_types = ["t3a.medium"]
+
+# RDS
+rds_instace = "db.t3.micro"
+rds_databases_list = ["app1_db", "app2_db", "app3_db"]
+rds_username = dbadmin
+rds_password = Rds@mysql36
+
+# Redis
+redis_instace = "cache.t3.small"
+snapshot_retention_limit = 7
+
+# CF
+cf_enable_acm_cert = false
+cf_custom_domain   = ""
+http_apigw_url = "<apigw_id>.execute-api.ap-southeast-1.amazonaws.com"
+
+managed_rules = [
+  {
+    "excluded_rules" : ["EC2MetaDataSSRF_QUERYARGUMENTS"],
+    "name" : "AWSManagedRulesCommonRuleSet",
+    "override_action" : "none",
+    "priority" : 10
+  },
+  {
+    "excluded_rules" : [],
+    "name" : "AWSManagedRulesAmazonIpReputationList",
+    "override_action" : "none",
+    "priority" : 20
+  },
+  {
+    "excluded_rules" : [],
+    "name" : "AWSManagedRulesKnownBadInputsRuleSet",
+    "override_action" : "none",
+    "priority" : 30
+  },
+  {
+    "excluded_rules" : [],
+    "name" : "AWSManagedRulesSQLiRuleSet",
+    "override_action" : "none",
+    "priority" : 40
+  },
+  {
+    "excluded_rules" : [],
+    "name" : "AWSManagedRulesLinuxRuleSet",
+    "override_action" : "none",
+    "priority" : 50
+  },
+  {
+    "excluded_rules" : [],
+    "name" : "AWSManagedRulesUnixRuleSet",
+    "override_action" : "none",
+    "priority" : 60
+  }
+]
