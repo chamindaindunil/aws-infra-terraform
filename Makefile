@@ -1,4 +1,4 @@
-workspace=dmr-prod
+workspace=prod
 plan:
 	terraform fmt -recursive
 	terraform init

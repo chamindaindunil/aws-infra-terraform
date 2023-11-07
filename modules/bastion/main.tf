@@ -24,7 +24,7 @@ resource "aws_instance" "ec2" {
 
 resource "aws_eip" "ip" {
   instance = aws_instance.ec2.id
-  domain = "vpc"
+  domain   = "vpc"
 }
 
 resource "aws_security_group" "bastion_ssh" {

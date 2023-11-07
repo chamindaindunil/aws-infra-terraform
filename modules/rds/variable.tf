@@ -15,4 +15,6 @@ variable "rds_instace" {
 
 variable "rds_disk_size" {}
 variable "rds_username" {}
-variable "rds_password" {}
+variable "rds_password" {
+  sensitive = true
+}

@@ -60,7 +60,9 @@ variable "rds_az_set" {}
 variable "rds_disk_size" {}
 
 variable "rds_username" {}
-variable "rds_password" {}
+variable "rds_password" {
+  sensitive = true
+}
 
 variable "rds_databases_list" {}
 
@@ -72,5 +74,7 @@ variable "managed_rules" {}
 
 # Redis
 variable "redis_instance" {}
-variable "redis_password" {}
+variable "redis_password" {
+  sensitive = true
+}
 variable "snapshot_retention_limit" {}

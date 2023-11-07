@@ -9,8 +9,10 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = var.aws_region
-  # profile = var.profile
+  region                   = var.aws_region
+  shared_config_files      = ["/Users/chamindaindunil/.aws/config"]
+  shared_credentials_files = ["/Users/chamindaindunil/.aws/credentials"]
+  # profile                  = "default"
 
   default_tags {
     tags = {
@@ -23,9 +25,11 @@ provider "aws" {
 
 # cloudfront region
 provider "aws" {
-  alias  = "useast1"
-  region = "us-east-1"
-  # profile = var.profile
+  alias                    = "useast1"
+  region                   = "us-east-1"
+  shared_config_files      = ["/Users/chamindaindunil/.aws/config"]
+  shared_credentials_files = ["/Users/chamindaindunil/.aws/credentials"]
+  # profile                  = "default"
 
   default_tags {
     tags = {

@@ -1,6 +1,6 @@
 # Nat gateway placed under public subnet to route to traffic to igw
 resource "aws_eip" "nat_gw_eip" {
-  count = var.enable_natgw == true ? 1 : 0
+  count  = var.enable_natgw == true ? 1 : 0
   domain = "vpc"
 }
 

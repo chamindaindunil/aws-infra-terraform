@@ -53,13 +53,18 @@ module "aws-s3" {
   environment = var.environment
 }
 
+module "api-gw" {
+  source  = "./modules/apigateway"
+  project = var.project
+}
+
 module "aws-cf" {
   source             = "./modules/cloudfront"
   project            = var.project
   waf_acl_id         = module.wafv2.web_acl_id
   cf_custom_domain   = var.cf_custom_domain
   cf_enable_acm_cert = var.cf_enable_acm_cert
-  http_apigw_url     = var.http_apigw_url
+  http_apigw_url     = modu
 }
 
 module "wafv2" {
